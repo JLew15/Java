@@ -6,6 +6,7 @@ public static void main(String[] args) {
  float myFloat = 3.14F;
  double myDouble = 6.02E23;
  boolean myBoolean = true;
+ String myString = "Why is everthing so hard?";
 
  System.out.println("My character: " + myChar);
  System.out.println("My interger: " + myInt);
@@ -13,5 +14,6 @@ public static void main(String[] args) {
  System.out.println("My float: " + myFloat);
  System.out.println("My double: " + myDouble);
  System.out.println("My boolean: " + myBoolean);
+ System.out.println("My string: " + myString);
 }
 }
