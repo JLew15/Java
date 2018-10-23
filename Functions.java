@@ -1,6 +1,9 @@
 public class Functions {
   public static void main(String[] args) {
-    makeSmiley();
+    if (0 == 0) {
+      makeSmiley();
+    }
+
   }
   public static void makeSmiley() {
    System.out.println("        ***        ");
