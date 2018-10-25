@@ -6,7 +6,6 @@ public class Factorials {
     int userNum = 0;
     System.out.print("Input a number: ");
 
-
     if (input.hasNextInt() ==  false) {
       System.out.println("Please try again!");
       input.close();
@@ -14,7 +13,6 @@ public class Factorials {
     }
 
     userNum = input.nextInt();
-
 
     long factorial = 1;
 
@@ -39,10 +37,6 @@ public class Factorials {
 
     System.out.println("Do While loop results: " + factorial);
     input.close();
-
-
-
-
   }
 
 }

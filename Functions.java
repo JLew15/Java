@@ -1,6 +1,6 @@
 public class Functions {
   public static void main(String[] args) {
-    if (0 == 0) {
+    while (0 == 0) {
       makeSmiley();
     }
 
