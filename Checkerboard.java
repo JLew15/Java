@@ -1,5 +1,5 @@
 public class Checkerboard{
-public static int printCheckerboard(int numRows, int numCols){
+public static void printCheckerboard(int numRows, int numCols){
 for (int row=0; row<numRows; row++)
 {
   for (int col=0; col<numCols; col++)
@@ -19,7 +19,7 @@ for (int row=0; row<numRows; row++)
 
 }
 }
-
+  System.out.println("");
 }
 public static void main(String[] args) {
   printCheckerboard(3,5);
