@@ -6,9 +6,9 @@ public class RaceTrack implements IRacer
 	public static void main(String[] args)
 	{
 
-		RaceCar car1 = new Racer("Demon", 70, 5);
-		RaceCar car2 = new Racer("Death", 100, 10);
-		RaceCar car3 = new Racer("Hellfire", 250, 50);
+		RaceCar car1 = new RaceCar("Demon", 70.0, 5.0);
+		RaceCar car2 = new RaceCar("Death", 100.0, 10.0);
+		RaceCar car3 = new RaceCar("Hellfire", 250.0, 50.0);
 
 		double FINISH_LINE1 = 10;
 		double FINISH_LINE2 = 50;
