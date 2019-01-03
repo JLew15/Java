@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////
 // Copyright 2012, CompuScholar, Inc.
 //
-// This source code is for use by the students and teachers who 
+// This source code is for use by the students and teachers who
 // have purchased the corresponding TeenCoder or KidCoder product.
 // It may not be transmitted to other parties for any reason
 // without the written consent of CompuScholar, Inc.
@@ -34,12 +34,12 @@ public class RaceTrack
 		// STUDENT should create three new RaceCar objects named
 		// car1, car2, and car3 below.  Use constructor parameters
 		// to give each car a unique name, maximum speed, and acceleration.
-		RaceCar car1 = 
-		RaceCar car2 = 
-		RaceCar car3 = 
+		RaceCar car1 = new RaceCar("Demon", 70.0, 5.0);
+		RaceCar car2 = new RaceCar("Death", 100.0, 10.0);
+		RaceCar car3 = new RaceCar("Hellfire", 250.0, 50.0);
 
 		// STUDENT does not need to modify anything below this line!
-		
+
 		// set the 3 finish line distances
 		double FINISH_LINE1 = 10;
 		double FINISH_LINE2 = 50;
@@ -59,27 +59,27 @@ public class RaceTrack
 	{
 		double fastestFinishTime;	// keep track of the fastest time
 		double currentFinishTime;	// holds the current race time
-		
+
 		// reset the speed of all cars back to zero
 		car1.resetCurrentSpeed();
 		car2.resetCurrentSpeed();
 		car3.resetCurrentSpeed();
-		
+
 		// show how far this race will cover
 		System.out.println("Racing to distance of: " + finishLine);
-		
+
 		// chose default fastest car
 		IRacer fastestCar = car1;	// assume car1 will win
-		
+
 		// race car 1 to finish and store result in current time
 		currentFinishTime = race(finishLine, car1);
-		
+
 		// first finish time is also the fastest time...
 		fastestFinishTime = currentFinishTime;
-		
+
 		// race car 2 to finish and store result in current time
 		currentFinishTime = race(finishLine, car2);
-		
+
 		// if the current time is faster
 		if (currentFinishTime < fastestFinishTime)
 		{
@@ -100,12 +100,12 @@ public class RaceTrack
 			// remember the car that produced the fastest time
 			fastestCar = car3;
 		}
-		
+
 		// show the winning car for this race distance!
 		System.out.println(fastestCar.getName() + " is the winner!");
 		System.out.println("");
 	}
-	
+
 	// This method is provided complete as part of the activity starter.
 	// It will race a single car the specified distance, showing progress
 	// on the command line each second and tracking total elapsed time.
@@ -114,40 +114,40 @@ public class RaceTrack
 		// show the car's name first
 		System.out.print(String.format("%20s",racer.getName()));
 		System.out.print(": ");
-		
+
 		// store the starting time, in milliseconds
 		long startTimeMilliseconds = System.currentTimeMillis();
-		
+
 		// initialize some internal variables
 		double currentPosition = 0;
 		long currentColumn = 0;
 		double lastStepOverage = 0;
 		double lastSpeed = 0;
-		
+
 		// while the car's position has not yet crossed the finish line
 		while (currentPosition < finishLine)
 		{
 			// give the racer a chance to speed up!
 			racer.accelerate();
-			
+
 			// get the racer's speed
 			lastSpeed = racer.getCurrentSpeed();
-			
+
 			// add the racer's speed to current position to get new position
 			currentPosition += lastSpeed;
-			
+
 			// if racer has crossed finish line
 			if (currentPosition >= finishLine)
 			{
 				// see if that last step took us past finish,
 				// in order to correct time calculation later!
 				lastStepOverage = currentPosition - finishLine;
-				
+
 				// set current position to finish line so we'll print
 				// only the right number of progress markers below
 				currentPosition = finishLine;
 			}
-			
+
 			// if racer moved at least one unit during this past second
 			if (currentPosition > currentColumn)
 			{
@@ -156,7 +156,7 @@ public class RaceTrack
 				{
 					System.out.print("=");
 				}
-				
+
 				// keep track of the new position after movement complete
 				currentColumn = (long)currentPosition;
 			}
@@ -166,31 +166,31 @@ public class RaceTrack
 			while ((now + 1000) > System.currentTimeMillis())
 			{
 			}
-		
+
 			// now go up and move the racer again, until we have finished!
 		}
-		
+
 		// capture stop time
 		long stopTimeMilliseconds = System.currentTimeMillis();
-		
+
 		// calculate elapsed milliseconds
 		double elapsedMilliseconds = (stopTimeMilliseconds - startTimeMilliseconds);
-		
+
 		// correct elapsed time if that last stop took us well past the finish line
 		elapsedMilliseconds -= (lastStepOverage / lastSpeed) * 1000;
 
 		// convert milliseconds to seconds
 		double elapsedSeconds = elapsedMilliseconds / 1000;
-		
+
 		// print out the elapsed time using exactly two decimal places
 		NumberFormat nf = NumberFormat.getInstance();
 		nf.setMaximumFractionDigits(2);
 		nf.setMinimumFractionDigits(2);
-		
+
 		System.out.println(": Finished in " + nf.format(elapsedSeconds) + " seconds");
-		
+
 		// return elapsed time for this racer and distance
-		return elapsedSeconds; 
+		return elapsedSeconds;
 	}
 
 }

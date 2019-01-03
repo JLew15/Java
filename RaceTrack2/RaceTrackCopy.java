@@ -1,6 +1,6 @@
 import java.text.NumberFormat;
 
-public class RaceTrack implements IRacer
+public class RaceTrackCopy
 {
 
 	public static void main(String[] args)

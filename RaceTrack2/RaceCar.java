@@ -1,11 +1,17 @@
 public class RaceCar implements IRacer{
 
-  public RaceCar(){
-    String name = "Name";
-    double maxSpeed = 0.0;
-    double acceleration = 0.0;
-    double myCurrentSpeed = 0.0;
-}
+
+    private String myName;
+    private double myMaxSpeed;
+    private double myAcceleration;
+    private double myCurrentSpeed;
+
+    public RaceCar (String name, double maxSpeed, double acceleration){
+      myName = name;
+      myMaxSpeed = maxSpeed;
+      myAcceleration = acceleration;
+      myCurrentSpeed = 0.0;
+    }
     public String getName(){
       return myName;
     }
