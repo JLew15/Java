@@ -2,23 +2,38 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class TwoButtons implements ActionListener{
+public class TwoButtons implements ActionListener{
+
+  JButton redButton = null;
+  JButton greenButton = null;
+  JFrame myFrame = null;
+  public void actionPerformed(ActionEvent event){
+    Object control = event.getSource();
+
+    if (control == redButton){
+      myFrame.getContentPane().setBackground(Color.red);
+    }
+    else if (control == greenButton){
+      myFrame.getContentPane().setBackground(Color.green);
+    }
+  }
 
 public static void main(String[] args) {
   new TwoButtons();
+
 }
  public TwoButtons(){
-   JFrame myFrame = new JFrame();
+   myFrame = new JFrame();
    FlowLayout myLayout = new FlowLayout();
    myFrame.setLayout(myLayout);
 
 
-   JButton redButton = new JButton("Red");
+   redButton = new JButton("Red");
    redButton.setEnabled(true);
    myFrame.add(redButton);
 
 
-   JButton greenButton = new JButton("Green");
+   greenButton = new JButton("Green");
    greenButton.setEnabled(true);
    myFrame.add(greenButton);
 
@@ -28,5 +43,8 @@ public static void main(String[] args) {
    myFrame.setLocation(200, 300);
    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    myFrame.setVisible(true);
- }
+
+   greenButton.addActionListener(this);
+   redButton.addActionListener(this);
+}
 }
