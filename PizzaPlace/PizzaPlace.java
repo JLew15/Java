@@ -5,7 +5,7 @@ import javax.swing.border.*;
 import java.util.List;
 @SuppressWarnings("unchecked")
 
-public class PizzaPlace{
+public class PizzaPlace implements ActionListener{
  JFrame myFrame = null;
  JTextField customerNameField = null;
  JRadioButton smallRadio = null;
@@ -20,6 +20,8 @@ public class PizzaPlace{
  JTextArea pizzaCommentsText = null;
  JButton placeOrderButton = null;
  JButton resetOrderButton = null;
+ String sizeSelection = "";
+ String extraSelection = "";
 
   public static void main(String[] args) {
     new PizzaPlace();
@@ -38,6 +40,7 @@ public class PizzaPlace{
     JPanel pizzaSizePanel = new JPanel();
     JLabel pizzaSizeLabel = new JLabel("Pizza Size:");
     smallRadio = new JRadioButton("Small");
+    smallRadio.setSelected(true);
     mediumRadio = new JRadioButton("Medium");
     largeRadio = new JRadioButton("Large");
     ButtonGroup pizzaSizeGroup = new ButtonGroup();
@@ -68,6 +71,7 @@ public class PizzaPlace{
     pizzaToppingsList = new JList<String>(pizzaToppings);
     pizzaToppingsList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     JScrollPane pizzaToppingsScroll = new JScrollPane(pizzaToppingsList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    pizzaToppingPanel.add(pizzaToppingLabel);
     pizzaToppingPanel.add(pizzaToppingsScroll);
     toppings = pizzaToppingsList.getSelectedValuesList();
 
@@ -94,6 +98,15 @@ public class PizzaPlace{
     resetOrderButton = new JButton("Reset Values");
     pizzaOrderPanel.add(placeOrderButton);
     pizzaOrderPanel.add(resetOrderButton);
+
+    placeOrderButton.addActionListener(this);
+    resetOrderButton.addActionListener(this);
+    smallRadio.addActionListener(this);
+    mediumRadio.addActionListener(this);
+    largeRadio.addActionListener(this);
+    breadSticksCheck.addActionListener(this);
+    saladCheck.addActionListener(this);
+    sodaCheck.addActionListener(this);
 
 
 
@@ -124,6 +137,44 @@ public class PizzaPlace{
     myFrame.setVisible(true);
     myFrame.pack();
 
+
+
+    }
+    public void actionPerformed(ActionEvent event){
+      Object control = event.getSource();
+      if(control == smallRadio){
+        sizeSelection = "Small";
+      }
+      else if(control == mediumRadio){
+        sizeSelection = "Medium";
+      }
+      else if(control == largeRadio){
+        sizeSelection = "Large";
+      }
+      else if(control == saladCheck){
+        extraSelection = extraSelection + " " + "Salad";
+      }
+      else if(control == breadSticksCheck){
+        extraSelection = extraSelection + "Bread Sticks";
+      }
+      else if(control == sodaCheck){
+        extraSelection = extraSelection + " " + "Soda";
+      }
+
+      else if(control == placeOrderButton){
+        JOptionPane.showMessageDialog(null, "CUSTOMER NAME: " + customerNameField.getText() + "\n" + "PIZZA SIZE: " + sizeSelection + "\n" + "CRUST TYPE: " + pizzaCrustCombo.getSelectedItem() + "\n" + "TOPPINGS: " + pizzaToppingsList.getSelectedValuesList() + "\n" + "EXTRAS: " + extraSelection + "\n" + "COMMENTS: " + pizzaCommentsText.getText());
+      }
+      else if(control == resetOrderButton){
+        customerNameField.setText("");
+        smallRadio.setSelected(true);
+        pizzaCrustCombo.setSelectedIndex(0);
+        pizzaToppingsList.clearSelection();
+        breadSticksCheck.setSelected(false);
+        saladCheck.setSelected(false);
+        sodaCheck.setSelected(false);
+        pizzaCommentsText.setText("");
+        extraSelection = "";
+      }
 
   }
 }
