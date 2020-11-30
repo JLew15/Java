@@ -22,10 +22,10 @@ public class Dog{
     if(sleeping == true){
       return;
     }
-    if(sound == name){
+    if(sound.equals(name)){
       System.out.println("WAG TAIL");
     }
-    if(sound == "ding-dong"){
+    else if(sound.equals("ding-dong")){
       System.out.println("BARK");
     }
     else{
@@ -40,7 +40,7 @@ public class Dog{
     else{
       numTimesFed++;
     }
-    if(numTimesFed >= 2){
+    if(numTimesFed > 2){
       System.out.println("YAWN");
     }
     else{
